@@ -235,3 +235,16 @@ class BookBot:
         application.run_polling(allowed_updates=Update.ALL_TYPES)
 
 
+if __name__ == '__main__':
+    if not Config.BOT_TOKEN or Config.BOT_TOKEN == 'your_bot_token_here':
+        print("Установите BOT_TOKEN в переменные окружения или создайте .env файл")
+        print("Пример .env файла:")
+        print("BOT_TOKEN=ваш_токен")
+        print("GOOGLE_BOOKS_API_KEY=ваш_ключ")
+        exit(1)
+
+    if not Config.GOOGLE_BOOKS_API_KEY:
+        print("GOOGLE_BOOKS_API_KEY не установлен. Работа без ключа ограничена.")
+
+    bot = BookBot()
+    bot.run()
