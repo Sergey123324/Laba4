@@ -8,7 +8,6 @@ class Database:
         self.init_db()
 
     def init_db(self):
-        """Инициализация базы данных"""
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
             cursor.execute('''
@@ -23,7 +22,6 @@ class Database:
             conn.commit()
 
     def add_or_update_user(self, user_id: int, username: str, first_name: str, last_name: str = ''):
-        """Добавление или обновление пользователя"""
         try:
             with sqlite3.connect(self.db_path) as conn:
                 cursor = conn.cursor()
@@ -36,7 +34,6 @@ class Database:
             print(f"Database error: {e}")
 
     def get_user_language(self, user_id: int) -> str:
-        """Получение языка пользователя"""
         try:
             with sqlite3.connect(self.db_path) as conn:
                 cursor = conn.cursor()

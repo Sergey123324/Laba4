@@ -8,7 +8,6 @@ class GoogleBooksAPI:
         self.base_url = Config.GOOGLE_BOOKS_URL
 
     def search_books(self, query: str, max_results: int = 5) -> dict:
-        """Поиск книг"""
         try:
             params = {'q': query, 'maxResults': max_results}
             if self.api_key:
@@ -22,7 +21,6 @@ class GoogleBooksAPI:
             return {'error': str(e), 'items': []}
 
     def get_book_details(self, book_id: str) -> dict:
-        """Получение информации о книге"""
         try:
             url = f"{self.base_url}/{book_id}"
             params = {'key': self.api_key} if self.api_key else {}
